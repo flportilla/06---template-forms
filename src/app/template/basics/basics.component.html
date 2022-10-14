@@ -3,20 +3,27 @@
 
 <div class="row">
     <div class="col">
-        <form>
+        <form (ngSubmit)="save()" #myForm="ngForm" autocomplete="off">
+
             <!-- product field -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">
                     Product
                 </label>
                 <div class="col-sm-9">
-                    <input type="text"
-                        class="form-control"
-                        placeholder="Product name"
-                    >
-                    <span class="form-text text-danger">
-                        Should contain 3 characters
-                    </span>
+
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        name="product" 
+                        [ngModel]="initialValue.product" 
+                        placeholder="Product name" 
+                        required
+                        minlength="3"
+                        >
+                        <span class="form-text text-danger" *ngIf="validName()">
+                            Should contain 3 characters
+                        </span>
                 </div>
             </div>
 
@@ -26,11 +33,18 @@
                     Price
                 </label>
                 <div class="col-sm-9">
-                    <input type="number"
-                        class="form-control"
-                        placeholder="Product price"
-                    >
-   
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        placeholder="Product price" 
+                        name="price" 
+                        [ngModel]="initialValue.price" 
+                        required
+                        min="0"
+                        >
+                    <span class="form-text text-danger" *ngIf="validPrice()">
+                        Price should be more than 0
+                    </span>
                 </div>
             </div>
 
@@ -40,23 +54,51 @@
                     In stock
                 </label>
                 <div class="col-sm-9">
-                    <input type="number"
-                        class="form-control"
-                        placeholder="Amount in stock"
-                    >
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        placeholder="Amount in stock" 
+                        name="stock" 
+                        customMin 
+                        [mini]=0 
+                        [ngModel]="initialValue.stock" 
+                        required
+                        >
                 </div>
             </div>
 
             <div class="row">
                 <div class="col">
-                    <button type="submit"
+                    <button 
+                        type="submit"
                         class="btn btn-primary float-end"
-                    >
+                        [disabled]="myForm.invalid"
+                        >
                         Save
                     </button>
                 </div>
             </div>
 
         </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <span>Valid</span>
+        <pre>{{ myForm.valid }}</pre>
+
+        <span>Valid</span>
+        <pre>{{ myForm.value | json }}</pre>
+
+        <span>Pristine</span>
+        <pre>{{ myForm.pristine| json }}</pre>
+
+        <span>Touched</span>
+        <pre>{{ myForm.touched | json }}</pre>
+<!-- 
+        <span>Custom directive</span>
+        <pre>{{ myForm.controls['stock'].errors | json }}</pre> -->
+        
     </div>
 </div>
