@@ -1,26 +1,44 @@
 <h2>Reactive: Switches</h2>
 <hr>
 
-<form>
+<form [formGroup]="myForm" (ngSubmit)="save()">
 
   <!-- radio -->
   <div class="row mb-3">
     <div class="col-sm-3 col-form-label">Gender: </div>
     <div class="col-sm-9">
       <div class="form-check">
-        <input value="m" class="form-check-input" type="radio" name="flexRadioDefault" id="male">
+        <input 
+          value="m" 
+          class="form-check-input" 
+          type="radio" 
+          id="male"
+          formControlName="gender"
+          >
         <label class="form-check-label" for="male">
           Male
         </label>
       </div>
       <div class="form-check">
-        <input value="f" class="form-check-input" type="radio" name="flexRadioDefault" id="female">
+        <input 
+          value="f" 
+          class="form-check-input" 
+          type="radio" 
+          id="female"
+          formControlName="gender"
+          >
         <label class="form-check-label" for="female">
           Female
         </label>
       </div>
       <div class="form-check">
-        <input value="o" class="form-check-input" type="radio" name="flexRadioDefault" id="other">
+        <input 
+          value="o" 
+          class="form-check-input" 
+          type="radio" 
+          id="other"
+          formControlName="gender"
+          >
         <label class="form-check-label" for="other">
           Other
         </label>
@@ -39,6 +57,7 @@
           type="checkbox" 
           role="switch" 
           id="switch"
+          formControlName="notifications"
           >
         <label class="form-check-label" for="switch">
           Receive notifications
@@ -55,6 +74,7 @@
           type="checkbox" 
           role="switch" 
           id="terms"
+          formControlName="terms"
           >
         <label class="form-check-label" for="terms">
           Terms and conditions
@@ -66,21 +86,18 @@
     <div class="col">
       <button 
         class="btn btn-primary float-end" 
-        type="button"
+        type="submit"
         >
         Save
       </button>
     </div>
   </div>
 
-  <!-- <h5>Form value</h5>
+  <h5>Form value</h5>
   <pre>{{myForm.value | json}}</pre>
   <br>
 
   <h5>Valid</h5>
   <pre>{{myForm.valid}}</pre>
   <br>
-
-  <pre>Conditions: </pre> -->
-
 </form>
