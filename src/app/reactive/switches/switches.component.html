@@ -1,1 +1,86 @@
-<p>switches works!</p>
+<h2>Reactive: Switches</h2>
+<hr>
+
+<form>
+
+  <!-- radio -->
+  <div class="row mb-3">
+    <div class="col-sm-3 col-form-label">Gender: </div>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input value="m" class="form-check-input" type="radio" name="flexRadioDefault" id="male">
+        <label class="form-check-label" for="male">
+          Male
+        </label>
+      </div>
+      <div class="form-check">
+        <input value="f" class="form-check-input" type="radio" name="flexRadioDefault" id="female">
+        <label class="form-check-label" for="female">
+          Female
+        </label>
+      </div>
+      <div class="form-check">
+        <input value="o" class="form-check-input" type="radio" name="flexRadioDefault" id="other">
+        <label class="form-check-label" for="other">
+          Other
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+
+      <div class="form-check form-switch mt-2">
+        <input 
+          class="form-check-input" 
+          type="checkbox" 
+          role="switch" 
+          id="switch"
+          >
+        <label class="form-check-label" for="switch">
+          Receive notifications
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <label class="col - sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input 
+          class="form-check-input" 
+          type="checkbox" 
+          role="switch" 
+          id="terms"
+          >
+        <label class="form-check-label" for="terms">
+          Terms and conditions
+        </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button 
+        class="btn btn-primary float-end" 
+        type="button"
+        >
+        Save
+      </button>
+    </div>
+  </div>
+
+  <!-- <h5>Form value</h5>
+  <pre>{{myForm.value | json}}</pre>
+  <br>
+
+  <h5>Valid</h5>
+  <pre>{{myForm.valid}}</pre>
+  <br>
+
+  <pre>Conditions: </pre> -->
+
+</form>

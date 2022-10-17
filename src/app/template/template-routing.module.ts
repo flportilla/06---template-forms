@@ -8,10 +8,10 @@ import { SwitchesComponent } from './switches/switches.component';
 const routes: Routes = [{
   path: '',
   children: [
-    {path: 'basics', component: BasicsComponent},
-    {path: 'dynamics', component: DynamicsComponent},
-    {path: 'switches', component: SwitchesComponent},
-    {path: '**', redirectTo: 'basics'},
+    { path: 'basics', component: BasicsComponent },
+    { path: 'dynamics', component: DynamicsComponent },
+    { path: 'switches', component: SwitchesComponent },
+    { path: '**', redirectTo: 'basics' },
   ]
 }];
 

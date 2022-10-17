@@ -1,1 +1,89 @@
-<p>dynamics works!</p>
+<h2>Reactive: <small>Dynamics</small></h2>
+<hr>
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="save()">
+    <!-- name -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-9">
+            <input 
+                class="form-control" 
+                placeholder="Name" 
+                type="text" 
+                name="name"
+                formControlName="name"
+                >
+            <span class="form-text text-danger float-end" *ngIf="isValidField('name')">
+                Mandatory
+            </span>
+        </div>
+    </div>
+    <!-- add favorite-->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Add</label>
+        <div class="col-sm-9">
+            <div class="input-group mb-1">
+
+                <input 
+                    class="form-control" 
+                    placeholder="Add favorite" 
+                    type="text"
+                    [formControl]="newFav"
+                    (keyup.enter)="addGame()"
+                    >
+                <button class="btn btn-outline-primary" type="button" (click)="addGame()">
+                    Add
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- favorite list -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Favorites</label>
+
+        <div class="col-sm-9" formArrayName="favorites">
+
+            <div class="input-group mb-1" *ngFor="let fav of favs.controls ; let i = index">
+                <input 
+                    class="form-control" 
+                    type="text"
+                    [formControlName]="i"
+                    >
+                <button class="btn btn-outline-danger" type="button" (click)="removeGame(i)">
+                    Remove
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary float-end">
+                Save
+            </button>
+        </div>
+    </div>
+</form>
+
+<span>
+    Valid:
+ <pre>{{ myForm.valid }}</pre>
+</span>
+<br>
+<span>
+    Valid:
+ <pre>{{ myForm.value| json}}</pre>
+</span>
+<br>
+<span>
+    Add game:
+ <pre>{{ newFav.value| json}}</pre>
+</span>
+<br>
+<span>
+    Add game:
+ <pre>{{ newFav.valid }}</pre>
+</span>
