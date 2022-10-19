@@ -1,0 +1,148 @@
+<h2>Reactive validations</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form 
+            autocomplete="off" 
+            [formGroup]="myForm" 
+            (ngSubmit)="onSubmit()"
+            >
+            <!-- name -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">
+                    Name:
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        formControlName="name" 
+                        type="text"
+                        class="form-control"
+                        placeholder="User name"
+                        >
+                
+                    <span 
+                        class="form-text text-danger" 
+                        *ngIf="isValidField('name')"
+                        >
+                        Must have first and last name
+                    </span>
+                </div>
+            </div>
+
+            <!-- email -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">
+                    Email:
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        formControlName="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="Email"
+                        >
+                    <span 
+                        class="form-text text-danger" 
+                        *ngIf="isValidField('email')"
+                    >
+                        Email is mandatory
+                    </span>
+                </div>
+            </div>
+
+            <!-- username -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">
+                    Username:
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        formControlName="username"
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                        >
+                    <span 
+                        class="form-text text-danger" 
+                        *ngIf="isValidField('username')"
+                    >
+                        krauxser is already in use
+                    </span>
+                </div>
+            </div>
+
+            <!-- password -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">
+                    Password:
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        formControlName="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        >
+                    <span 
+                        class="form-text text-danger" 
+                        *ngIf="isValidField('password')"
+                    >
+                        Password must be at least 6 characters long
+                    </span>
+                </div>
+            </div>
+
+            <!-- confirm password -->
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">
+                    Confirm password:
+                </label>
+                <div class="col-sm-9">
+                    <input 
+                        formControlName="password2"
+                        type="password"
+                        class="form-control"
+                        placeholder="Confirm password"
+                        >
+                    <span 
+                        class="form-text text-danger" 
+                        *ngIf="isValidField('password2')"
+                    >
+                        Passwords must match
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button 
+                        type="submit" 
+                        class="btn btn-primary float-end"
+                        >
+                        Create
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<h5>Form valid: <pre>{{ myForm.valid }}</pre></h5>
+<h5>Form errors: <pre>{{ myForm.errors | json}}</pre></h5>
+
+<h5>Name:</h5>
+<pre>{{ myForm.controls['name'].errors | json }}</pre>
+
+<h5>Email:</h5>
+<pre>{{ myForm.controls['email'].errors | json }}</pre>
+
+<h5>Username:</h5>
+<pre>{{ myForm.controls['username'].errors | json }}</pre>
+
+<h5>password:</h5>
+<pre>{{ myForm.controls['password'].errors | json }}</pre>
+
+<h5>password2:</h5>
+<pre>{{ myForm.controls['password2'].errors | json }}</pre>
