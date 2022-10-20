@@ -46,8 +46,20 @@
                         class="form-text text-danger" 
                         *ngIf="isValidField('email')"
                     >
-                        Email is mandatory
+                        {{ emailErrorMsg }}
                     </span>
+                    <!-- <span 
+                        class="form-text text-danger" 
+                        *ngIf="isValidEmail()"
+                    >
+                        Email is not valid
+                    </span>
+                    <span 
+                        class="form-text text-danger" 
+                        *ngIf="dupEmail()"
+                    >
+                        Email already in use
+                    </span> -->
                 </div>
             </div>
 
@@ -117,6 +129,7 @@
             <div class="row">
                 <div class="col">
                     <button 
+                        [disabled]="myForm.pending"
                         type="submit" 
                         class="btn btn-primary float-end"
                         >
@@ -131,6 +144,8 @@
 
 <h5>Form valid: <pre>{{ myForm.valid }}</pre></h5>
 <h5>Form errors: <pre>{{ myForm.errors | json}}</pre></h5>
+<h5>Form status: <pre>{{ myForm.status| json}}</pre></h5>
+<h5>Form pending: <pre>{{ myForm.pending| json}}</pre></h5>
 
 <h5>Name:</h5>
 <pre>{{ myForm.controls['name'].errors | json }}</pre>

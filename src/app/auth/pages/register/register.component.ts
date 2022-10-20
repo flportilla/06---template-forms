@@ -33,6 +33,8 @@ export class RegisterComponent implements OnInit {
       name: 'fl portilla',
       email: 'test1@test.com',
       username: 'krauxs',
+      password: 'krauxs',
+      password2: 'krauxs',
     })
   }
 
@@ -40,6 +42,29 @@ export class RegisterComponent implements OnInit {
     return this.myForm.get(field)?.invalid
       && this.myForm.get(field)?.touched
   }
+
+  get emailErrorMsg(): string{
+    const errors = this.myForm.get('email')?.errors
+    if(errors?.['required']) return 'Email is mandatory'
+    if(errors?.['pattern']) return 'Email is invalid'
+    if(errors?.['emailInUse']) return 'Email is already used'
+
+    return ''
+  }
+
+  // requiredEmail() {
+  //   return this.myForm.get('email')?.touched
+  //     && this.myForm.get('email')?.errors?.['required']
+  // }
+
+  // isValidEmail() {
+  //   return this.myForm.get('email')?.touched
+  //     && this.myForm.get('email')?.errors?.['pattern']
+  // }
+  // dupEmail() {
+  //   return this.myForm.get('email')?.touched
+  //     && this.myForm.get('email')?.errors?.['emailInUse']
+  // }
 
   onSubmit() {
     console.log(this.myForm.value);
